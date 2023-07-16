@@ -1,3 +1,119 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: monospace;
+  font-size: 20px;
+  color: white;
+  /* background: linear-gradient(to bottom, #27296d, #5e63b6, #a393eb, #f5c7f7); */
+  background: linear-gradient(to top, #5e63b6, #a393eb, #f5c7f7, #fff4db);
+  /* background: linear-gradient(to bottom, #ffde74, #ffa974, #ff715a); */
+}
+
+.containerMain {
+  display: block;
+  margin: 0 auto;
+  width: 55%;
+  padding: 20px;
+  /* border: 1px #dadde1 solid; */
+  border-radius: 10px;
+  background-color: rgb(218, 221, 225, 0.5);
+  box-shadow: 4px 6px 25px 25px rgba(0, 0, 0, 0.05);
+}
+
+input {
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.searchInput {
+  border-radius: 6px;
+  border: 1px rgb(218, 221, 225, 0.5) solid;
+  background-color: rgb(255, 255, 255, 0.6);
+  box-shadow: 0px 6px 25px 0px rgba(0, 0, 0, 0.1);
+  padding: 3px;
+}
+
+.searchInput:focus {
+  border: 3px #998ce4 solid;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.searchBtn {
+  border-radius: 6px;
+  border: 1px rgb(218, 221, 225, 0.5) solid;
+  color: rgba(0, 0, 0, 0.4);
+  background-color: rgb(255, 255, 255, 0.6);
+  box-shadow: 0px 6px 25px 0px rgba(0, 0, 0, 0.1);
+  padding: 3px;
+}
+
+.searchBtn:hover {
+  background-color: #998ce4;
+  transition: ease-in-out 0.2s;
+}
+
+hr {
+  border: none;
+  border-top: 2.5px solid rgb(255, 255, 255);
+}
+
+.mainInfo {
+  display: flex;
+  align-items: center;
+}
+
+.leftDiv {
+  flex: 1;
+  margin: 5px 0px 15px 0px;
+}
+
+.rightDiv {
+  flex: 1;
+}
+
 .temperature {
-  float: right;
+  text-align: center;
+  font-size: 150px;
+  line-height: 200px;
+}
+
+.units {
+  text-align: center;
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: #6367ba;
+}
+
+.hourly:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+  transform-origin: center;
+  transition: ease-in-out 0.2s;
+}
+
+.daily:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+  transform-origin: center;
+  transition: ease-in-out 0.2s;
+}
+.wind:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+  transform-origin: center;
+  transition: ease-in-out 0.2s;
 }
