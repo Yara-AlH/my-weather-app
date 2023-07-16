@@ -37,7 +37,7 @@ input {
 }
 
 .searchInput:focus {
-  border: 3px #998ce4 solid;
+  border: 1px #998ce4 solid;
   outline: none;
 }
 
