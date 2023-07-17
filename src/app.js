@@ -1,5 +1,4 @@
 let now = new Date();
-
 let days = [
   "Sunday",
   "Monday",
@@ -9,30 +8,22 @@ let days = [
   "Friday",
   "Saturday",
 ];
-
-// let months = [
-//   "Jan",
-//   "Feb",
-//   "Mar",
-//   "Apr",
-//   "May",
-//   "Jun",
-//   "Jul",
-//   "Aug",
-//   "Sep",
-//   "Oct",
-//   "Nov",
-//   "Dec",
-// ];
-
 let currentDay = days[now.getDay()];
-// let currentMonth = months[now.getMonth()];
 let currentHour = now.getHours();
 let currentMinute = now.getMinutes();
 
 document.querySelector(
   "#current-date"
 ).innerHTML = `${currentDay} ${currentHour}:${currentMinute}`;
+
+if (currentMinute < 10) {
+  currentMinute = `0${currentMinute}`;
+}
+if (currentHour < 10) {
+  currentHour = `0${currentHour}`;
+}
+
+//
 
 function showWeatherForecast(response) {
   console.log(response);

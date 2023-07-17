@@ -99,6 +99,10 @@ a:hover {
   color: #6367ba;
 }
 
+.condition::first-letter {
+  text-transform: capitalize;
+}
+
 .hourly:hover {
   cursor: pointer;
   transform: scale(1.15);
@@ -117,4 +121,22 @@ a:hover {
   transform: scale(1.15);
   transform-origin: center;
   transition: ease-in-out 0.2s;
+}
+
+.footer {
+  position: absolute;
+  bottom: 18px;
+  left: 310px;
+  font-size: 16px;
+  color: rgb(255, 255, 255, 0.5);
+}
+
+.openSourceCode {
+  color: rgb(255, 255, 255, 0.5);
+}
+
+.openSourceCode:hover {
+  color: #fce5e5;
+  text-decoration: underline;
+  font-weight: 700;
 }
