@@ -8,32 +8,41 @@ let days = [
   "Friday",
   "Saturday",
 ];
+
 let currentDay = days[now.getDay()];
 let currentHour = now.getHours();
 let currentMinute = now.getMinutes();
 
-document.querySelector(
-  "#current-date"
-).innerHTML = `${currentDay} ${currentHour}:${currentMinute}`;
-
 if (currentMinute < 10) {
   currentMinute = `0${currentMinute}`;
+  console.log(currentMinute);
 }
 if (currentHour < 10) {
   currentHour = `0${currentHour}`;
 }
 
+document.querySelector(
+  "#current-date"
+).innerHTML = `${currentDay} ${currentHour}:${currentMinute}`;
+
 //
 
 function showWeatherForecast(response) {
   console.log(response);
-  let temp = Math.round(response.data.main.temp);
-  let condition = response;
+  let temp = Math.round(response.data.temperature.current);
+  let icon = response.data.condition.icon;
 
   document.querySelector(".temperature").innerHTML = Math.round(temp);
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector(".condition").innerHTML =
-    response.data.weather[0].description;
+    response.data.condition.description;
+
+  document
+    .querySelector("#weatherIcon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
+    );
 }
 
 function getWeather(event) {
@@ -41,10 +50,11 @@ function getWeather(event) {
   let cityValue = cityInput.value;
   cityInput.value = null;
 
-  let apiKey = "d1a86552de255334f6117b348c4519bd";
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${apiKey}&units=metric`;
-
+  let apiKey = "0c6283dt87dcb24afbce90bd2bac3o16";
+  let apiURL = `https://api.shecodes.io/weather/v1/current?query=${cityValue}&key=${apiKey}&units=metric`;
+  console.log(apiURL);
   axios.get(apiURL).then(showWeatherForecast);
 }
 
-document.querySelector(".searchBtn").addEventListener("click", getWeather);
+let submitBtn = document.querySelector(".searchBtn");
+submitBtn.addEventListener("click", getWeather);
