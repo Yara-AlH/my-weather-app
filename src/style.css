@@ -1,22 +1,29 @@
 body {
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; */
+  margin: 0;
   font-family: monospace;
   font-size: 20px;
   color: white;
   /* background: linear-gradient(to bottom, #27296d, #5e63b6, #a393eb, #f5c7f7); */
   background: linear-gradient(to top, #5e63b6, #a393eb, #f5c7f7, #fff4db);
-  /* background: linear-gradient(to bottom, #ffde74, #ffa974, #ff715a); */
+  /* background: linear-gradient(to bottom, #ffde74, #ffa974, #ff715a); 
+  */
 }
 
-.containerMain {
-  display: block;
+.container {
+  max-width: 720px;
+}
+
+.weatherApp {
+  max-width: 700px;
   margin: 0 auto;
-  width: 55%;
-  padding: 20px;
-  /* border: 1px #dadde1 solid; */
+  margin-top: 80px;
+  /* display: block; */
+  padding: 50px;
+  border: 1px solid transparent;
   border-radius: 10px;
   background-color: rgb(218, 221, 225, 0.5);
   box-shadow: 4px 6px 25px 25px rgba(0, 0, 0, 0.05);
@@ -29,7 +36,7 @@ input {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.searchInput {
+.search-form {
   border-radius: 6px;
   border: 1px rgb(218, 221, 225, 0.5) solid;
   background-color: rgb(255, 255, 255, 0.6);
@@ -37,12 +44,12 @@ input {
   padding: 3px;
 }
 
-.searchInput:focus {
+.search-form:focus {
   border: 1px #998ce4 solid;
   outline: none;
 }
 
-.searchInput::placeholder {
+.search-form::placeholder {
   color: rgba(0, 0, 0, 0.4);
 }
 
@@ -60,29 +67,42 @@ input {
   transition: ease-in-out 0.2s;
 }
 
+.lastUpdate {
+  font-size: 18px;
+}
+
+.condition {
+  font-size: 18px;
+}
+
 hr {
   border: none;
   border-top: 2.5px solid rgb(255, 255, 255);
 }
 
 .mainInfo {
-  display: flex;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .leftDiv {
-  flex: 1;
-  margin: 5px 0px 15px 0px;
+  align-items: center;
 }
 
 .rightDiv {
-  flex: 1;
+  align-items: center;
 }
-
 .temperature {
   text-align: center;
-  font-size: 150px;
-  line-height: 200px;
+  font-size: 100px;
+}
+
+.temp {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tempNumebr {
+  margin-right: 10px;
 }
 
 .units {
@@ -123,11 +143,26 @@ a:hover {
   transition: ease-in-out 0.2s;
 }
 
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.weather-forecast-date {
+  font-size: 18px;
+}
+
+.weather-forecast-temperature-max {
+  font-size: 15px;
+}
+
+.weather-forecast-temperature-min {
+  font-size: 15px;
+}
+
 .footer {
-  position: absolute;
-  bottom: 18px;
-  left: 310px;
-  font-size: 16px;
+  text-align: center;
+  font-size: 12px;
   color: rgb(255, 255, 255, 0.5);
 }
 
@@ -137,6 +172,5 @@ a:hover {
 
 .openSourceCode:hover {
   color: #fce5e5;
-  text-decoration: underline;
   font-weight: 700;
 }

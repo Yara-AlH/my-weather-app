@@ -32,7 +32,7 @@ function showWeatherForecast(response) {
   let temp = Math.round(response.data.temperature.current);
   let icon = response.data.condition.icon;
 
-  document.querySelector(".temperature").innerHTML = Math.round(temp);
+  document.querySelector(".tempNumber").innerHTML = Math.round(temp);
   document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector(".condition").innerHTML =
     response.data.condition.description;
@@ -46,7 +46,7 @@ function showWeatherForecast(response) {
 }
 
 function getWeather(event) {
-  let cityInput = document.querySelector(".searchInput");
+  let cityInput = document.querySelector(".search-form");
   let cityValue = cityInput.value;
   cityInput.value = null;
 
