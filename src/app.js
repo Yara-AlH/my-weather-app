@@ -15,7 +15,6 @@ let currentMinute = now.getMinutes();
 
 if (currentMinute < 10) {
   currentMinute = `0${currentMinute}`;
-  console.log(currentMinute);
 }
 if (currentHour < 10) {
   currentHour = `0${currentHour}`;
@@ -27,25 +26,13 @@ document.querySelector(
 
 //
 
-function showWeatherForecast(response) {
-  console.log(response);
-  let temp = Math.round(response.data.temperature.current);
-  let icon = response.data.condition.icon;
+let celsiusTemperature = null;
 
-  document.querySelector(".tempNumber").innerHTML = Math.round(temp);
-  document.querySelector("#city").innerHTML = response.data.city;
-  document.querySelector(".condition").innerHTML =
-    response.data.condition.description;
-
-  document
-    .querySelector("#weatherIcon")
-    .setAttribute(
-      "src",
-      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
-    );
-}
+let submitBtn = document.querySelector(".searchBtn");
+submitBtn.addEventListener("click", getWeather);
 
 function getWeather(event) {
+  event.preventDefault();
   let cityInput = document.querySelector(".search-form");
   let cityValue = cityInput.value;
   cityInput.value = null;
@@ -56,5 +43,70 @@ function getWeather(event) {
   axios.get(apiURL).then(showWeatherForecast);
 }
 
-let submitBtn = document.querySelector(".searchBtn");
-submitBtn.addEventListener("click", getWeather);
+function showWeatherForecast(response) {
+  let temp = response.data.temperature.current;
+  let icon = response.data.condition.icon;
+
+  celsiusTemperature = response.data.temperature.current;
+
+  document.querySelector(".tempNumber").innerHTML =
+    Math.round(celsiusTemperature);
+  document.querySelector("#city").innerHTML = response.data.city;
+  document.querySelector(".condition").innerHTML =
+    response.data.condition.description;
+
+  // document
+  //   .querySelector("#weatherIcon")
+  //   .setAttribute(
+  //     "src",
+  //     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
+  //   );
+}
+
+function handlePosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+
+  let apiKey = "0c6283dt87dcb24afbce90bd2bac3o16";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showCoordsForecast);
+}
+
+function showCoordsForecast(response) {
+  let temp = response.data.temperature.current;
+
+  celsiusTemperature = response.data.temperature.current;
+
+  document.querySelector("#city").innerHTML = response.data.city;
+  document.querySelector(".condition").innerHTML =
+    response.data.condition.description;
+  document.querySelector(".tempNumber").innerHTML =
+    Math.round(celsiusTemperature);
+}
+
+navigator.geolocation.getCurrentPosition(handlePosition);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-convert");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+
+  let tempInFahrenheit = (celsiusTemperature * 9) / 5 + 32;
+  document.querySelector(".tempNumber").innerHTML =
+    Math.round(tempInFahrenheit);
+}
+
+let celsiusLink = document.querySelector("#celsius-convert");
+celsiusLink.addEventListener("click", convertToCelsius);
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  document.querySelector(".tempNumber").innerHTML =
+    Math.round(celsiusTemperature);
+}
