@@ -16,11 +16,12 @@ body {
 }
 
 .evening {
-  background: linear-gradient(to bottom, #27296d, #5e63b6, #a393eb, #f5c7f7);
+  background: linear-gradient(to bottom, #27296d, #5e63b6, #a393eb, #f5c7f7)
+    fixed;
 }
 
 .morning {
-  background: linear-gradient(to bottom, #ffde74, #ffa974, #ff715a);
+  background: linear-gradient(to bottom, #ffde74, #ffa974, #ff715a) fixed;
 }
 
 .container {
