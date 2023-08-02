@@ -11,7 +11,14 @@ let days = [
 
 let currentDay = days[now.getDay()];
 let currentHour = now.getHours();
+console.log(currentHour);
 let currentMinute = now.getMinutes();
+
+if (currentHour > 7 && currentHour < 19) {
+  document.body.className = "morning";
+} else {
+  document.body.className = "evening";
+}
 
 if (currentMinute < 10) {
   currentMinute = `0${currentMinute}`;
@@ -44,6 +51,7 @@ function getWeather(event) {
 }
 
 function showWeatherForecast(response) {
+  console.log(response.data);
   let temp = response.data.temperature.current;
   let icon = response.data.condition.icon;
 
@@ -55,12 +63,12 @@ function showWeatherForecast(response) {
   document.querySelector(".condition").innerHTML =
     response.data.condition.description;
 
-  // document
-  //   .querySelector("#weatherIcon")
-  //   .setAttribute(
-  //     "src",
-  //     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
-  //   );
+  document
+    .querySelector(".weatherIcon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
+    );
 }
 
 function handlePosition(position) {
@@ -75,6 +83,7 @@ function handlePosition(position) {
 
 function showCoordsForecast(response) {
   let temp = response.data.temperature.current;
+  let icon = response.data.condition.icon;
 
   celsiusTemperature = response.data.temperature.current;
 
@@ -83,6 +92,13 @@ function showCoordsForecast(response) {
     response.data.condition.description;
   document.querySelector(".tempNumber").innerHTML =
     Math.round(celsiusTemperature);
+
+  document
+    .querySelector(".weatherIcon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
+    );
 }
 
 navigator.geolocation.getCurrentPosition(handlePosition);

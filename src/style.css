@@ -11,10 +11,16 @@ body {
   font-family: monospace;
   font-size: 20px;
   color: white;
-  /* background: linear-gradient(to bottom, #27296d, #5e63b6, #a393eb, #f5c7f7); */
-  background: linear-gradient(to top, #5e63b6, #a393eb, #f5c7f7, #fff4db) fixed;
 
-  /* background: linear-gradient(to bottom, #ffde74, #ffa974, #ff715a); */
+  background: linear-gradient(to top, #5e63b6, #a393eb, #f5c7f7, #fff4db) fixed;
+}
+
+.evening {
+  background: linear-gradient(to bottom, #27296d, #5e63b6, #a393eb, #f5c7f7);
+}
+
+.morning {
+  background: linear-gradient(to bottom, #ffde74, #ffa974, #ff715a);
 }
 
 .container {
@@ -114,12 +120,21 @@ hr {
   font-size: 20px;
 }
 
-a {
+.units .celsiusLink {
   text-decoration: none;
   color: white;
 }
 
-a:hover {
+.units .celsiusLink:hover {
+  color: #6367ba;
+}
+
+.units .fahrenheitLink {
+  text-decoration: none;
+  color: white;
+}
+
+.units .fahrenheitLink:hover {
   color: #6367ba;
 }
 
