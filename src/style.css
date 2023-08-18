@@ -3,10 +3,6 @@ html {
 }
 
 body {
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; */
   margin: 0;
   font-family: monospace;
   font-size: 20px;
@@ -32,11 +28,11 @@ body {
   max-width: 700px;
   margin: 0 auto;
   margin-top: 80px;
-  /* display: block; */
-  padding: 50px;
+  padding: 40px;
   border: 1px solid transparent;
   border-radius: 10px;
-  background-color: rgb(218, 221, 225, 0.5);
+  background-color: rgb(218, 221, 225, 0.3);
+
   box-shadow: 4px 6px 25px 25px rgba(0, 0, 0, 0.05);
 }
 
@@ -76,6 +72,7 @@ input {
 .searchBtn:hover {
   background-color: #998ce4;
   transition: ease-in-out 0.2s;
+  border: 1px #998ce4 solid;
 }
 
 .lastUpdate {
@@ -102,6 +99,11 @@ hr {
 .rightDiv {
   align-items: center;
 }
+
+.city {
+  font-weight: 550;
+}
+
 .temperature {
   text-align: center;
   font-size: 100px;
@@ -175,15 +177,25 @@ hr {
 }
 
 .weather-forecast-date {
+  font-size: 14px;
+}
+
+.weather-forecast-date {
   font-size: 18px;
+}
+
+.weather-forecast-temp {
+  font-size: 14px;
 }
 
 .weather-forecast-temperature-max {
   font-size: 14px;
+  font-weight: bold;
 }
 
 .weather-forecast-temperature-min {
   font-size: 14px;
+  opacity: 80%;
 }
 
 .footer {
