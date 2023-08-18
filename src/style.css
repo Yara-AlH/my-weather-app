@@ -31,7 +31,7 @@ body {
   padding: 40px;
   border: 1px solid transparent;
   border-radius: 10px;
-  background-color: rgb(218, 221, 225, 0.3);
+  background-color: rgb(218, 221, 225, 0.2);
 
   box-shadow: 4px 6px 25px 25px rgba(0, 0, 0, 0.05);
 }
@@ -123,28 +123,8 @@ hr {
   font-size: 20px;
 }
 
-.units .celsiusLink {
-  text-decoration: none;
-  color: white;
-}
-
-.units .celsiusLink:hover {
-  color: #6367ba;
-}
-
-.units .fahrenheitLink {
-  text-decoration: none;
-  color: white;
-}
-
-.units .fahrenheitLink:hover {
-  color: #6367ba;
-}
-
-.units .active:hover {
-  cursor: default;
-  text-decoration: none;
-  color: white;
+.celcius {
+  font-size: 25px;
 }
 
 .condition::first-letter {
