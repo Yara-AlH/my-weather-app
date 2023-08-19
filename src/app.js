@@ -13,12 +13,6 @@ let currentDay = days[now.getDay()];
 let currentHour = now.getHours();
 let currentMinute = now.getMinutes();
 
-if (currentHour > 7 && currentHour < 19) {
-  document.body.className = "morning";
-} else {
-  document.body.className = "evening";
-}
-
 if (currentMinute < 10) {
   currentMinute = `0${currentMinute}`;
 }
@@ -49,11 +43,20 @@ function getWeather(event) {
 
   let forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${cityValue}&key=${apiKey}`;
   axios.get(forecastApiUrl).then(showWeatherForecast);
+  axios.get(forecastApiUrl).then(showWindForecast);
 }
 
-function showWeather(response) {
-  console.log(response.data);
+document.querySelector("#daily-tab").addEventListener("click", function () {
+  document.querySelector(".weather-forecast").style.display = "block";
+  document.querySelector(".wind-forecast").style.display = "none";
+});
 
+document.querySelector("#wind-tab").addEventListener("click", function () {
+  document.querySelector(".weather-forecast").style.display = "none";
+  document.querySelector(".wind-forecast").style.display = "block";
+});
+
+function showWeather(response) {
   let temp = response.data.temperature.current;
   let icon = response.data.condition.icon;
 
@@ -72,14 +75,11 @@ function showWeather(response) {
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
     );
 
-  getForecast();
-}
-
-function getForecast(response) {
-  let apiKey = "0c6283dt87dcb24afbce90bd2bac3o16";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
-
-  axios.get(apiUrl).then(showWeatherForecast);
+  if (icon.includes("night")) {
+    document.body.className = "evening";
+  } else if (icon.includes("day")) {
+    document.body.className = "morning";
+  }
 }
 
 function formatday(timestamp) {
@@ -92,12 +92,11 @@ function formatday(timestamp) {
 
 function showWeatherForecast(response) {
   let forecast = response.data.daily;
-
   let forecastElement = document.querySelector(".weather-forecast");
 
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastday, index) {
-    if (index > 0) {
+    if (index < 6) {
       forecastHTML =
         forecastHTML +
         ` <div class="col">
@@ -126,6 +125,36 @@ function showWeatherForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function showWindForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector(".wind-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastday, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col">
+           <div class="wind-forecast-date">${formatday(forecastday.time)}</div>
+           <img
+           src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+             forecastday.condition.icon
+           }.png"
+           alt=""
+           width="42"
+           />
+           <div class="wind-forecast-speed">
+             <span class="wind-forecast-speed"> ${
+               forecastday.wind.speed
+             } km/h</span>
+           </div>
+         </div>`;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function handlePosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -137,6 +166,7 @@ function handlePosition(position) {
 
   let forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
   axios.get(forecastApiUrl).then(showWeatherForecast);
+  axios.get(forecastApiUrl).then(showWindForecast);
 }
 
 function showCoords(response) {

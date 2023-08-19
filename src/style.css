@@ -131,13 +131,6 @@ hr {
   text-transform: capitalize;
 }
 
-.hourly:hover {
-  cursor: pointer;
-  transform: scale(1.15);
-  transform-origin: center;
-  transition: ease-in-out 0.2s;
-}
-
 .daily:hover {
   cursor: pointer;
   transform: scale(1.15);
@@ -154,14 +147,27 @@ hr {
 .weather-forecast {
   margin-top: 20px;
   text-align: center;
+  display: block;
+}
+
+.wind-forecast {
+  margin-top: 20px;
+  text-align: center;
+  display: none;
+}
+
+.wind-forecast-speed {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 5px 0px 4px 0px;
 }
 
 .weather-forecast-date {
   font-size: 14px;
 }
 
-.weather-forecast-date {
-  font-size: 18px;
+.wind-forecast-date {
+  font-size: 14px;
 }
 
 .weather-forecast-temp {
