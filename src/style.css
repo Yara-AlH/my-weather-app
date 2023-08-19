@@ -20,7 +20,10 @@ body {
 }
 
 .morning {
-  background: linear-gradient(to bottom, #ffeba1, #ffbb9c, #ff8f85) fixed;
+  /* background: linear-gradient(to bottom, #ffeba1, #ffbb9c, #ff8f85) fixed; */
+  /* background: linear-gradient(to bottom, #fff5c2, #ffcfbe, #ffb0a2) fixed; */
+  background: linear-gradient(to bottom, #fff1b5, #ffc5b0, #ffa09a) fixed;
+
   color: hwb(5 31% 2%);
   text-shadow: 1px 1px 2px #bea4ef;
 }
