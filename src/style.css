@@ -14,10 +14,15 @@ body {
 .evening {
   background: linear-gradient(to bottom, #27296d, #5e63b6, #a393eb, #f5c7f7)
     fixed;
+
+  color: hwb(237 16% 67%);
+  text-shadow: 1px 1px 3px #edc2f5;
 }
 
 .morning {
-  background: linear-gradient(to bottom, #ffde74, #ffa974, #ff715a) fixed;
+  background: linear-gradient(to bottom, #ffeba1, #ffbb9c, #ff8f85) fixed;
+  color: hwb(5 31% 2%);
+  text-shadow: 1px 1px 2px #bea4ef;
 }
 
 .container {
@@ -32,6 +37,8 @@ body {
   border: 1px solid transparent;
   border-radius: 10px;
   background-color: rgb(218, 221, 225, 0.2);
+  /* color: #6568bc; */
+  text-shadow: 1px 1px 2px #686abe;
 
   box-shadow: 4px 6px 25px 25px rgba(0, 0, 0, 0.05);
 }
