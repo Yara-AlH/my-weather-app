@@ -146,7 +146,7 @@ function showWindForecast(response) {
            <div class="wind-forecast-speed">
              <span class="wind-forecast-speed"> ${
                forecastday.wind.speed
-             } km/h</span>
+             } </span> <span class="kmH"> km/h </span>
            </div>
          </div>`;
     }
