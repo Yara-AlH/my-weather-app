@@ -65,6 +65,7 @@ function showWeather(response) {
   document.querySelector(".tempNumber").innerHTML =
     Math.round(celsiusTemperature);
   document.querySelector("#city").innerHTML = response.data.city;
+  document.querySelector(".country").innerHTML = response.data.country;
   document.querySelector(".condition").innerHTML =
     response.data.condition.description;
 
@@ -176,6 +177,7 @@ function showCoords(response) {
   celsiusTemperature = response.data.temperature.current;
 
   document.querySelector("#city").innerHTML = response.data.city;
+  document.querySelector(".country").innerHTML = response.data.country;
   document.querySelector(".condition").innerHTML =
     response.data.condition.description;
   document.querySelector(".tempNumber").innerHTML =
