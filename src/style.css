@@ -30,9 +30,8 @@ body {
       rgba(0, 0, 0, 0.15)
     ),
     linear-gradient(to bottom, #fff1b5, #ffc5b0, #ffa09a) fixed;
-  text-shadow: 1px 1px 3px #eacbf0;
 
-  color: hwb(5 31% 2% / 0.822);
+  color: hwb(237 20% 63%);
 }
 
 .container {
